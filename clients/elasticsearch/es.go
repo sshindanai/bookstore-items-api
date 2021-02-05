@@ -24,6 +24,7 @@ type esClient struct {
 
 func Init() {
 	var err error
+	log := logger.Logger()
 
 	client, err := elastic.NewClient(
 		elastic.SetURL("http://localhost:9200"),
@@ -31,10 +32,10 @@ func Init() {
 		elastic.SetHealthcheckInterval(10*time.Second),
 		//elastic.SetRetrier(NewCustomRetrier()),
 		//elastic.SetGzip(true),
-		//elastic.SetErrorLog(log.New(os.Stderr, "ELASTIC ", log.LstdFlags)),
-		//elastic.SetInfoLog(log.New(os.Stdout, "", log.LstdFlags)),
+		elastic.SetErrorLog(log),
+		elastic.SetInfoLog(log),
 		/*elastic.SetHeaders(http.Header{
-			"X-Caller-Id": []string{"..."},
+			"X-CallerId": []string{"..."},
 		}),*/
 	)
 	if err != nil {

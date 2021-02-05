@@ -10,7 +10,7 @@ var (
 )
 
 type itemsServiceInterface interface {
-	Create(*models.Item, chan *models.ItemConcurrent)
+	Create(*models.Item) <-chan *models.ItemConcurrent
 	GetItemList(chan *models.ItemConcurrent)
 	Get(string, chan *models.ItemConcurrent)
 	Update(string, chan *models.ItemConcurrent)
@@ -19,16 +19,20 @@ type itemsServiceInterface interface {
 
 type itemsService struct{}
 
-func (s *itemsService) Create(item *models.Item, output chan *models.ItemConcurrent) {
+func (s *itemsService) Create(item *models.Item) <-chan *models.ItemConcurrent {
+	output := make(chan *models.ItemConcurrent)
+
 	if err := item.Validate(); err != nil {
 		result := models.ItemConcurrent{
 			Error: err,
 		}
 		output <- &result
-		return
+		return output
 	}
 
 	go repository.ItemsRepository.Create(item, output)
+
+	return output
 }
 
 func (s *itemsService) GetItemList(output chan *models.ItemConcurrent) {

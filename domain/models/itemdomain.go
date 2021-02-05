@@ -9,11 +9,11 @@ const (
 	indexItems = "items"
 )
 
-func (i *Item) Validate() *resterrors.RestErr {
+func (i *Item) Validate() resterrors.RestErr {
 	return nil
 }
 
-func (i *Item) Save() *resterrors.RestErr {
+func (i *Item) Save() resterrors.RestErr {
 	result, err := elasticsearch.Client.Index(indexItems, i)
 	if err != nil {
 		return resterrors.NewInternalServerError("error when trying to save an item", err)

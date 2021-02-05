@@ -16,20 +16,19 @@ type itemsRepositoryInterface interface {
 type itemsRepository struct{}
 
 func (i *itemsRepository) Create(item *models.Item, output chan *models.ItemConcurrent) {
-	go func() {
-		if err := item.Save(); err != nil {
-			result := models.ItemConcurrent{
-				Error: err,
-			}
-			output <- &result
-			return
-		}
-
+	defer close(output)
+	if err := item.Save(); err != nil {
 		result := models.ItemConcurrent{
-			Result: item,
+			Error: err,
 		}
 		output <- &result
-	}()
+		return
+	}
+
+	result := models.ItemConcurrent{
+		Result: item,
+	}
+	output <- &result
 }
 
 func (i *itemsRepository) Get(itemID string, output chan *models.ItemConcurrent) {

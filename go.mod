@@ -5,6 +5,6 @@ go 1.15
 require (
 	github.com/gorilla/mux v1.8.0
 	github.com/olivere/elastic/v7 v7.0.22
-	github.com/sshindanai/bookstore-oauth-go v0.5.0
-	github.com/sshindanai/bookstore-utils-go v0.1.0
+	github.com/sshindanai/bookstore-oauth-go v0.9.0
+	github.com/sshindanai/bookstore-utils-go v0.4.0
 )

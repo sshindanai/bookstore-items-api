@@ -13,6 +13,6 @@ func RespondJSON(w http.ResponseWriter, statusCode int, body interface{}) {
 	json.NewEncoder(w).Encode(body)
 }
 
-func RespondError(w http.ResponseWriter, err *resterrors.RestErr) {
-	RespondJSON(w, err.Code, err)
+func RespondError(w http.ResponseWriter, err resterrors.RestErr) {
+	RespondJSON(w, err.StatusCode(), err)
 }
