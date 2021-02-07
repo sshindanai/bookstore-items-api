@@ -21,7 +21,6 @@ type itemsService struct{}
 
 func (s *itemsService) Create(item *models.Item) <-chan *models.ItemConcurrent {
 	output := make(chan *models.ItemConcurrent)
-
 	if err := item.Validate(); err != nil {
 		result := models.ItemConcurrent{
 			Error: err,

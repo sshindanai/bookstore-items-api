@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
-	"github.com/sshindanai/bookstore-utils-go/logger"
 	"github.com/sshindanai/repo/bookstore-items-api/clients/elasticsearch"
 )
 
@@ -26,8 +25,6 @@ func StartApp() {
 		IdleTimeout:  60 * time.Second,
 		Handler:      r,
 	}
-
-	logger.Info("app is starting...")
 
 	if err := srv.ListenAndServe(); err != nil {
 		panic(err)

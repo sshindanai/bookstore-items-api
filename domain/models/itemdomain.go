@@ -10,6 +10,9 @@ const (
 )
 
 func (i *Item) Validate() resterrors.RestErr {
+	if i.Title == "" {
+		return resterrors.NewBadRequestError("error empty title")
+	}
 	return nil
 }
 

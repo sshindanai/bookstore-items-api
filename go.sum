@@ -46,10 +46,12 @@ github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFR
 github.com/smartystreets/assertions v1.1.1/go.mod h1:tcbTF8ujkAEcZ8TElKY+i30BzYlVhC/LOxJk7iOWnoo=
 github.com/smartystreets/go-aws-auth v0.0.0-20180515143844-0c1422d1fdb9/go.mod h1:SnhjPscd9TpLiy1LpzGSKh3bXCfxxXuqd9xmQJy3slM=
 github.com/smartystreets/gunit v1.4.2/go.mod h1:ZjM1ozSIMJlAz/ay4SG8PeKF00ckUp+zMHZXV9/bvak=
-github.com/sshindanai/bookstore-oauth-go v0.9.0 h1:lBXxpLqNMRHk2tz2ccqPybJaFshzgqCUeihgjq0rFx4=
-github.com/sshindanai/bookstore-oauth-go v0.9.0/go.mod h1:3xqldxGFfBNXqspBzhYGoE86guv5l81nbLuo804mW7M=
+github.com/sshindanai/bookstore-oauth-go v0.10.2 h1:ws2z1SpWlBIWo8+L5RRyXevBZBudCMfofNX5KoxHFLY=
+github.com/sshindanai/bookstore-oauth-go v0.10.2/go.mod h1:3xqldxGFfBNXqspBzhYGoE86guv5l81nbLuo804mW7M=
 github.com/sshindanai/bookstore-utils-go v0.4.0 h1:27SQo2ZFojO5cUhNAG3ZBpvYDZAnJuTgWE2hizqqTDs=
 github.com/sshindanai/bookstore-utils-go v0.4.0/go.mod h1:zDBR9DPaXJTc6tTmzTNjKLj/QKLeQRbBGaQDtJ6UzMg=
+github.com/sshindanai/bookstore-utils-go v0.5.0 h1:JCEBEVgapFHbOVYqKhMn4llVX2bKZPCnPZwT6p1zRGE=
+github.com/sshindanai/bookstore-utils-go v0.5.0/go.mod h1:zDBR9DPaXJTc6tTmzTNjKLj/QKLeQRbBGaQDtJ6UzMg=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=

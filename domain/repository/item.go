@@ -16,7 +16,6 @@ type itemsRepositoryInterface interface {
 type itemsRepository struct{}
 
 func (i *itemsRepository) Create(item *models.Item, output chan *models.ItemConcurrent) {
-	defer close(output)
 	if err := item.Save(); err != nil {
 		result := models.ItemConcurrent{
 			Error: err,

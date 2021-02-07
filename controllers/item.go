@@ -9,6 +9,7 @@ import (
 
 	"github.com/sshindanai/bookstore-utils-go/resterrors"
 
+	"github.com/sshindanai/repo/bookstore-items-api/utils/authenutils"
 	"github.com/sshindanai/repo/bookstore-items-api/utils/httputils"
 
 	"github.com/sshindanai/bookstore-oauth-go/oauth"
@@ -27,16 +28,15 @@ type itemsControllerInterface interface {
 type itemsController struct{}
 
 func (h *itemsController) Create(w http.ResponseWriter, r *http.Request) {
-	var item models.Item
-	if err := oauth.AuthenticateRequest(r); err != nil {
-		// TODO: return err to the caller
-		httputils.RespondError(w, err)
+	auth := authenutils.AuthenManager(r)
+	if auth.Error != nil {
+		httputils.RespondError(w, auth.Error)
 		return
 	}
-
-	sellerID := oauth.CallerID(r)
+	sellerID := auth.SellerID
 	if sellerID == 0 {
-		httputils.RespondError(w, resterrors.NewUnauthorizedError("invalid access token"))
+		respErr := resterrors.NewUnauthorizedError("invalid access token")
+		httputils.RespondError(w, respErr)
 		return
 	}
 
@@ -47,6 +47,7 @@ func (h *itemsController) Create(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	var item models.Item
 	if err := json.Unmarshal(requestBody, &item); err != nil {
 		respErr := resterrors.NewBadRequestError("invalid json body")
 		httputils.RespondError(w, respErr)
