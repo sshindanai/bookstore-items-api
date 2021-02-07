@@ -5,8 +5,8 @@ import (
 )
 
 type ItemConcurrent struct {
-	Result Item                `json:"result"`
-	Error  *resterrors.RestErr `json:"error"`
+	Result *Item              `json:"result"`
+	Error  resterrors.RestErr `json:"error"`
 }
 
 type Item struct {

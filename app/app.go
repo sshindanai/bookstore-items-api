@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
-	"github.com/sshindanai/bookstore-utils-go/logger"
+	"github.com/sshindanai/repo/bookstore-items-api/clients/elasticsearch"
 )
 
 var (
@@ -14,8 +14,9 @@ var (
 
 // StartApp is the entry point of the app.
 func StartApp() {
-	mapUrls()
+	elasticsearch.Init()
 
+	mapUrls()
 	srv := &http.Server{
 		Addr: ":8081",
 		// Good practice to set timeouts to avoid Slowloris attacks.
@@ -24,8 +25,6 @@ func StartApp() {
 		IdleTimeout:  60 * time.Second,
 		Handler:      r,
 	}
-
-	logger.Logger().Info("app is starting...")
 
 	if err := srv.ListenAndServe(); err != nil {
 		panic(err)
